@@ -1,0 +1,76 @@
+.review-reader { color: #28332f; font-family: "Segoe UI", "Microsoft YaHei", sans-serif; letter-spacing: 0; }
+.review-toolbar { display: flex; flex-wrap: wrap; align-items: end; gap: 12px 18px; padding: 14px 0; border-block: 1px solid #d7ded9; background: #f5f7f6; }
+.review-reader label { display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: #58655e; }
+.review-reader select, .review-reader input, .review-reader textarea { font: inherit; color: #28332f; border: 1px solid #bfcac3; border-radius: 4px; padding: 7px 9px; background: white; max-width: 100%; }
+.review-toolbar select { max-width: 290px; }
+.review-reader .review-check { flex-direction: row; align-items: center; padding-bottom: 8px; }
+.review-count, .review-save { font-size: 12px; line-height: 1.7; margin: 9px 0; color: #536b60; }
+.review-save:empty { display: none; }
+.review-unit { padding: 22px 0 28px; border-bottom: 1px solid #cdd8d1; }
+.review-unit-meta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; font-size: 12px; color: #63716a; margin-bottom: 16px; }
+.review-unit-meta label { flex-direction: row; align-items: center; margin-left: auto; }
+.review-unit-meta select { padding: 4px; }
+.review-reader .review-paragraph { white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 17px; font-size: 15px; line-height: 1.95; }
+.review-source { color: #555d62; font-family: Georgia, "Times New Roman", serif; }
+.review-target { color: #202a24; }
+.review-reader mark { color: inherit; cursor: pointer; padding: 1px 0; border-radius: 0; }
+.review-reader .quote-mark { background: #ffe19a; border-bottom: 2px solid #b98520; }
+.review-reader .paragraph-mark { background: #fff8e6; border-bottom: 1px dotted #b59039; }
+.review-reader .search-hit { background: #d7eff0; border-bottom: 2px solid #328489; cursor: text; }
+.review-reader .search-current { background: #ffe19a; outline: 1px solid #a77a21; }
+.term-concordance { border-block: 1px solid #ccd7d1; padding: 10px 0; margin-bottom: 15px; }
+.term-concordance > button { display: block; width: 100%; text-align: left; background: none; border: 0; border-bottom: 1px dotted #ccd7d1; padding: 9px 0; font-size: 13px; }
+.author-definition { padding: 12px 0; line-height: 1.8; font-size: 13px; overflow-wrap: anywhere; }
+.review-qa-stale { color: #8b5728; font-size: 12px; }
+.review-reader mark:focus-visible { outline: 2px solid #217a64; outline-offset: 2px; }
+.review-explanation { font-size: 13px; line-height: 1.8; border-left: 3px solid #bfd2c6; padding-left: 15px; overflow-wrap: anywhere; }
+.review-issue { padding: 10px 0 14px; border-bottom: 1px solid #e0e5e2; }
+.review-issue:last-child { border-bottom: 0; }
+.review-issue p { margin: 5px 0; }
+.review-issue-heading { display: flex; gap: 10px; justify-content: space-between; align-items: start; flex-wrap: wrap; }
+.review-reader .review-issue-focus { border: 0; border-radius: 0; background: none; padding: 0; min-height: 30px; text-align: left; justify-content: start; color: #8d3f38; font-weight: 600; cursor: pointer; }
+.review-reader .note .review-issue-focus { color: #506781; }
+.review-issue-focus[aria-pressed="true"] { text-decoration: underline; }
+.review-issue-heading label { flex-direction: row; align-items: center; }
+.review-reader .review-issue textarea { display: block; width: 100%; height: 66px; min-height: 66px; resize: vertical; font-size: 12px; margin-top: 9px; line-height: 1.6; }
+.review-recommendation { color: #285e4c; }
+.review-location, .review-clear { font-size: 12px; color: #6f7873; }
+.review-related { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.review-reader summary { cursor: pointer; color: #52697b; padding: 6px 0; }
+.review-context { margin-top: 10px; }
+.review-context p { white-space: pre-wrap; margin: 10px 0; }
+.review-context > div { border-top: 1px dashed #d7ded9; padding-top: 10px; }
+.review-pager { display: flex; align-items: center; justify-content: center; gap: 15px; padding: 22px 0; }
+.review-pager input { width: 65px; }
+.review-pager button { width: 40px; height: 36px; }
+.review-empty { padding: 35px 0; color: #65736b; }
+.review-editor { margin: 0 0 18px; padding: 10px 0; border-block: 1px solid #dde3df; }
+.review-edit-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0; }
+.review-reader .review-editor textarea { display: block; width: 100%; height: 230px; min-height: 170px; resize: vertical; line-height: 1.85; font-size: 14px; }
+.review-note-status { color: #326553; font-size: 12px; }
+.review-edit-conflict { color: #9b3b31; font-size: 13px; }
+.review-history > div { border-top: 1px dashed #cad4ce; padding: 10px 0; }
+.review-proposal { padding: 8px 0; border-top: 1px dashed #c5d2ca; }
+.review-reader button { white-space: normal; overflow-wrap: anywhere; max-width: 100%; }
+.natural-paragraph { padding-bottom: 14px; }
+.paragraph-notes { padding: 0 0 14px 14px; margin: 0 0 18px; border-left: 2px solid #ccd7d1; font-size: 13px; line-height: 1.8; overflow-wrap: anywhere; }
+.paragraph-notes p { white-space: pre-wrap; margin: 7px 0; }
+.author-note, .translator-note { padding: 9px 0; border-bottom: 1px dotted #ccd7d1; }
+.author-note > strong { color: #39596d; }
+.translator-note > strong { color: #76502f; }
+.note-source { color: #596166; font-family: Georgia, "Times New Roman", serif; }
+.note-translation { color: #25392f; }
+.paragraph-notes button { margin: 5px 8px 3px 0; font-size: 12px; }
+.annotation-editor { display: grid; gap: 10px; padding: 10px 0; }
+.review-reader .annotation-editor textarea { width: 100%; height: 150px; min-height: 110px; resize: vertical; font-size: 14px; line-height: 1.8; }
+.review-reader .author-note-callout button { display: inline; min-height: 0; border: 0; border-radius: 0; background: transparent; color: #326a83; padding: 0 2px; font-size: 11px; vertical-align: baseline; }
+.term-manager { margin: 18px 0; padding: 20px; border: 1px solid #cad7cf; border-radius: 8px; background: #f7faf8; }
+.term-manager[hidden] { display: none; }
+.term-manager > label, .term-preview label { display: block; margin: 12px 0; font-size: 14px; }
+.term-manager input:not([type=checkbox]), .term-manager textarea { display: block; width: 100%; box-sizing: border-box; margin-top: 6px; padding: 9px; }
+.term-manager textarea { min-height: 90px; resize: vertical; line-height: 1.7; }
+.term-manager button { margin: 6px 10px 6px 0; }
+.term-manager p { white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.8; }
+.term-preview > details, .term-manager > details { border-top: 1px solid #d7e0da; padding: 8px 0; }
+@media(max-width:640px) { .review-toolbar { gap: 12px; } .review-toolbar > label { flex: 1 1 145px; min-width: 0; } .review-toolbar select, .review-toolbar input { width: 100%; } .review-toolbar .review-check { flex: 1 1 200px; justify-content: start; } .review-check input { width: auto; } .review-reader .review-paragraph { font-size: 14px; } .review-explanation { padding-left: 10px; } .review-unit-meta label { margin-left: 0; } }
+@media print { .review-toolbar, .review-pager, .review-issue textarea, .review-issue-heading label, .review-unit-meta label, .review-save { display: none; } .review-unit { break-inside: avoid; } }

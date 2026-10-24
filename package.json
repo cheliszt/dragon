@@ -1,0 +1,22 @@
+{
+  "name": "translator-dragon",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloud PaddleOCR to GPT translation and QA workflow",
+  "scripts": {
+    "start": "node src/web-server.mjs --open",
+    "doctor": "node src/cli.mjs doctor",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.9",
+    "docx": "^9.7.2",
+    "pdf-lib": "^1.17.1",
+    "pdfjs-dist": "^6.3.289",
+    "pdfkit": "^0.20.2"
+  }
+}

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>translator-dragon · 文献识别与翻译</title>
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/review.css">
+  <script src="/app.js" type="module"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark" aria-hidden="true">文</span><div><h1>translator-dragon</h1><span class="subtitle">研究工作台</span></div></div>
+    <div class="connection"><span class="dot" id="connection-dot"></span><span id="connection">正在连接</span></div>
+  </header>
+  <main>
+    <section class="intake" aria-label="上传文献">
+      <div class="section-heading"><h2>新建文献任务</h2><span class="muted">PDF · 最大 50 MB</span></div>
+      <div id="dropzone" class="dropzone">
+        <div class="file-select"><label class="button secondary" for="pdf">选择 PDF</label><input id="pdf" type="file" accept=".pdf,application/pdf"><div class="file-meta"><strong id="file-name">尚未选择文献</strong><span id="file-size" class="muted">或将 PDF 拖入此处</span></div></div>
+        <button id="upload" class="primary" disabled>开始处理</button>
+      </div>
+      <fieldset class="source-mode"><legend>原文获取方式</legend><label><input type="radio" name="source-mode" value="auto" checked>自动判断</label><label><input type="radio" name="source-mode" value="text">本地提取文字</label><label><input type="radio" name="source-mode" value="ocr">云端 OCR</label></fieldset>
+      <div id="upload-languages" class="language-options" aria-label="新文献翻译语言"></div>
+      <div class="service-line"><span id="ocr-config">识别服务：检查中</span><span id="translation-config">翻译服务：检查中</span></div>
+      <div id="upload-progress" hidden><progress id="upload-meter" max="100" value="0"></progress><span id="upload-label">上传中</span></div>
+      <p id="notice" role="status" hidden></p>
+      <p id="error" role="alert" hidden></p>
+    </section>
+    <div class="workspace">
+      <aside class="history">
+        <div class="section-heading"><h2>文献记录</h2><span id="project-count" class="count">0</span></div>
+        <nav id="projects" aria-label="文献记录"></nav>
+        <p id="history-empty" class="muted">暂无任务</p>
+      </aside>
+      <section class="document" aria-label="文献工作区">
+        <div id="empty" class="empty">
+          <span class="empty-glyph" aria-hidden="true">文</span>
+          <h2>尚未打开文献</h2>
+          <p>原件 / 校对稿 / 译文 / 质检报告</p>
+        </div>
+        <div id="detail" hidden>
+          <div class="document-heading"><div class="title-area"><h2 id="project-name"></h2><p id="project-id" class="muted"></p></div><span id="project-status" class="badge"></span></div>
+          <ol class="steps" aria-label="处理阶段"><li>1　获取原文</li><li>2　校对</li><li>3　翻译与质检</li><li>4　完成</li></ol>
+          <div id="job-progress" class="job-progress" role="status"></div>
+          <div id="task-actions" class="actions" hidden><span id="task-detail" role="status"></span><div><button id="pause-task" class="secondary" hidden title="当前请求完成并保存后暂停" aria-label="暂停后台任务">Ⅱ</button><button id="resume-source" class="secondary" hidden>继续获取原文</button></div></div>
+          <p id="source-method" class="source-method" hidden></p>
+          <p id="project-error" class="error" hidden></p>
+          <div class="tabs" role="tablist" aria-label="文献内容">
+            <button role="tab" aria-selected="true" data-tab="source">原文校对</button>
+            <button role="tab" aria-selected="false" data-tab="bilingual">双语审阅</button>
+            <button role="tab" aria-selected="false" data-tab="chinese">译文稿</button>
+            <button role="tab" aria-selected="false" data-tab="qa">正文质检</button>
+          </div>
+          <div id="source-view">
+            <div id="project-languages" class="language-options" aria-label="当前文献翻译语言"></div>
+            <p class="muted">仅翻译所选源语言；已有目标语言及未选语言原样保留。中文选项包含汉语拼音，也可单独勾选拼音；拼音译法进入正文质检待人工审核。翻译开始后语言设置固定。</p>
+            <div class="actions"><span id="save-status" class="muted"></span><div><a id="source-download" class="button secondary" hidden>下载原文</a><button id="save" class="secondary" disabled>保存校对</button><button id="translate" class="primary" disabled>批准原文并翻译</button></div></div>
+            <section id="source-review" class="source-review" aria-label="原文待核对清单" hidden>
+              <div class="source-review-heading"><strong id="source-issue-count" role="status"></strong><div class="source-review-navigation"><select id="source-issue-select" aria-label="选择待核对项"></select><button id="source-issue-previous" class="secondary">上一处</button><button id="source-issue-next" class="secondary">下一处</button></div></div>
+              <p class="muted">自动标记仅提示疑点。请对照原页补录或修正文字；核对无误后逐项确认，再保存校对、批准原文。</p>
+              <p id="source-issue-empty" role="status">没有未决标记。完成原文校对后，可点击「批准原文并翻译」。</p>
+              <div id="source-issue-detail">
+                <p id="source-issue-position" class="muted"></p><p id="source-issue-reason"></p><p class="muted">附近文字（可能包含相邻页内容）</p><pre id="source-issue-context"></pre>
+                <div class="source-review-buttons"><button id="source-issue-locate" class="secondary">定位原文与 PDF</button><button id="source-issue-resolve" class="secondary">已核对，移除此处标记</button></div>
+                <p class="muted">确认会移除选中的标记；自动生成的页级提示会一并移除，保留页码、段落标识及正文。请先核对，勿将确认用于删除原文中的同名词语。</p>
+              </div>
+              <button id="source-issue-undo" class="secondary" hidden>撤销上次确认</button>
+            </section>
+            <div class="source-columns">
+              <div class="original"><div class="pane-label"><span>PDF 原件</span><a id="original-link" target="_blank" rel="noopener" hidden>打开原件</a></div><div id="pdf-preview" hidden><div class="pdf-toolbar"><button id="previous-page" class="secondary" title="上一页" aria-label="上一页">←</button><label for="page-number">页码</label><input id="page-number" type="number" min="1" value="1"><span id="page-count">/ —</span><button id="next-page" class="secondary" title="下一页" aria-label="下一页">→</button></div><div id="pdf-pages"><p id="pdf-message" role="status"></p><canvas id="pdf-canvas" aria-label="PDF 页面"></canvas></div></div><div id="no-pdf" class="pane-empty">暂无 PDF 原件</div></div>
+              <div class="editor"><label for="source-text" class="pane-label">原文校对稿</label><textarea id="source-text" spellcheck="false" readonly aria-label="原文校对稿"></textarea><div id="no-source" class="pane-empty">等待识别结果</div></div>
+            </div>
+          </div>
+          <div id="output-view" hidden><div class="actions"><span id="output-name"></span><div><a id="output-download" class="button secondary">下载 Markdown</a><a id="output-word" class="button secondary" hidden>下载 Word</a><a id="output-pdf" class="button secondary" hidden>下载 PDF</a></div></div><pre id="output-text"></pre><div id="review-reader" hidden></div></div>
+          <p id="storage" class="storage muted"></p>
+        </div>
+      </section>
+    </div>
+  </main>
+  <footer><span>识别 · PaddleOCR</span><span id="provider">翻译服务</span><span id="target-language-label">输出语言 · 简体中文</span></footer>
+</body>
+</html>

@@ -1,0 +1,32 @@
+# Credentials and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+.npmrc
+
+# User projects, every processing stage, runtime state and diagnostics
+projects/
+diagnostics/
+.runtime/
+tmp/
+temp/
+outputs/
+exports/
+backups/
+*.log
+*.tmp
+*.bak
+
+# Installed dependencies, editor and OS metadata
+node_modules/
+coverage/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

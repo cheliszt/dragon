@@ -1,0 +1,39 @@
+{
+  "paddle": {
+    "baseUrl": "https://paddleocr.aistudio-app.com",
+    "model": "PaddleOCR-VL-1.6",
+    "pollIntervalMs": 5000,
+    "timeoutMs": 3600000,
+    "optionalPayload": {
+      "useDocOrientationClassify": false,
+      "useDocUnwarping": false,
+      "useChartRecognition": false
+    }
+  },
+  "openai": {
+    "model": "gpt-5.4",
+    "baseUrl": "https://api.openai.com/v1",
+    "maxOutputTokens": 16000,
+    "chunkMaxChars": 4500,
+    "concurrency": 1,
+    "stream": true,
+    "timeoutMs": 600000,
+    "idleTimeoutMs": 120000,
+    "unitMaxChars": 1800,
+    "requestAttempts": 4,
+    "semanticQa": true
+  },
+  "recovery": {
+    "maxCycles": 3,
+    "cooldownMs": 60000
+  },
+  "textLayer": {
+    "minPageCharacters": 80,
+    "minCoverage": 0.85,
+    "maxBadCharacterRatio": 0.01
+  },
+  "translation": {
+    "sourceLanguages": ["en"],
+    "targetLanguage": "简体中文"
+  }
+}

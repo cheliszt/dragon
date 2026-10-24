@@ -1,7 +1,6 @@
 # translator-dragon
 
-面向文献阅读与人工校订的本地翻译工作台：PDF 文字提取或云端 PaddleOCR → 原文校对与批准 → 分段翻译 → 质检、修订与导出。GitHub 仓库名为 `dragon`，程序名称为 `translator-dragon`。
-
+面向文献阅读与人工校订的本地AI翻译工作台：PDF 文字提取或云端 PaddleOCR → 原文校对与批准 → 分段翻译 → 质检、修订与导出。
 支持双语审阅、术语管理、原注与译注、断点恢复，以及 Markdown、HTML、Word、PDF 导出。AI 生成的译文、术语判断和质检建议仍须对照原文人工核查。
 
 ## 安装与启动
